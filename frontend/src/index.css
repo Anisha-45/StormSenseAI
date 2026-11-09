@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { min-height: 100%; }
+body {
+  @apply font-sans text-slate-800 antialiased;
+  background: radial-gradient(1200px 600px at 100% -10%, #dbe7ff 0%, transparent 60%), radial-gradient(900px 500px at -10% 110%, #ffe9c7 0%, transparent 55%), #f5f8ff;
+  background-attachment: fixed;
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-white/70 bg-white p-5 shadow-soft ring-1 ring-slate-900/5 transition duration-200; }
+  .card-hover { @apply hover:-translate-y-0.5 hover:shadow-lift; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-storm-600 to-storm-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:from-storm-700 hover:to-storm-600 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-storm-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-accent { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-volt-500 to-volt-400 px-4 py-2 text-sm font-bold text-ink-950 shadow-glow transition hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-storm-200 hover:bg-storm-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-storm-500 disabled:cursor-not-allowed disabled:opacity-50; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-storm-100 bg-white px-3.5 py-1.5 text-sm font-semibold text-storm-700 shadow-sm transition hover:-translate-y-0.5 hover:border-storm-400 hover:bg-storm-600 hover:text-white; }
+  .input { @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-storm-500 focus:outline-none focus:ring-4 focus:ring-storm-500/15; }
+  .label { @apply mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-500; }
+  .th { @apply whitespace-nowrap bg-storm-50 px-3 py-2.5 text-left text-xs font-bold uppercase tracking-wide text-storm-700; }
+  .td { @apply px-3 py-2.5 text-sm text-slate-700; }
+  .glass { @apply border border-white/15 bg-white/10 backdrop-blur-md; }
+}
+
+.leaflet-container { height: 100%; width: 100%; border-radius: 1rem; z-index: 0; }
+.scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: rgba(100,116,139,.35); border-radius: 9px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

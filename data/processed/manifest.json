@@ -1,0 +1,74 @@
+{
+  "dataset_id": "noaa_storm_events_2010_2020_extract",
+  "dataset_version": "20261109134138",
+  "created_at": "2026-11-09T13:41:38.832869+00:00",
+  "raw_row_counts": {
+    "details": 32671,
+    "locations": 414575,
+    "fatalities": 8107
+  },
+  "unique_events": 32671,
+  "events_with_coordinates": 25251,
+  "events_with_location_rows": 20975,
+  "events_with_fatality_rows": 232,
+  "year_counts": {
+    "2017": 219,
+    "2018": 521,
+    "2019": 1310,
+    "2020": 30621
+  },
+  "date_range": [
+    "2017-02-08 18:00:00",
+    "2020-09-30 17:00:00"
+  ],
+  "config": {
+    "name": "default",
+    "event_type_case": "title",
+    "damage_missing_policy": "keep_nan_and_flag",
+    "coordinate_policy": "flag_missing",
+    "snap_zero_coordinates_to_missing": true
+  },
+  "issues": [
+    {
+      "table": "details",
+      "issue": "events without coordinates (kept; excluded from map and spatial analysis only)",
+      "count": 7420,
+      "detail": "mostly forecast-zone (CZ_TYPE=Z) events; the locations file contains no rows for them",
+      "sample_ids": []
+    },
+    {
+      "table": "locations",
+      "issue": "rows with missing EVENT_ID/LATITUDE/LONGITUDE (excluded from aggregation)",
+      "count": 1,
+      "detail": "kept in raw file, excluded from aggregation",
+      "sample_ids": []
+    },
+    {
+      "table": "locations",
+      "issue": "rows whose EVENT_ID is not in the details file (not joined)",
+      "count": 382574,
+      "detail": "234248 distinct events; details covers a different period",
+      "sample_ids": []
+    },
+    {
+      "table": "fatalities",
+      "issue": "rows whose EVENT_ID is not in the details file (not joined)",
+      "count": 7774,
+      "detail": "4868 distinct events",
+      "sample_ids": []
+    },
+    {
+      "table": "fatalities",
+      "issue": "events with deaths in details but no row in the fatalities file",
+      "count": 1,
+      "detail": "expected for most events: the fatalities file covers a different period than details",
+      "sample_ids": []
+    }
+  ],
+  "processing_seconds": 2.24,
+  "notes": [
+    "Details is the event-level source; locations and fatalities were aggregated per EVENT_ID before joining.",
+    "The details file covers a narrower period than its filename suggests; see year_counts.",
+    "Original DAMAGE_PROPERTY / DAMAGE_CROPS strings are preserved beside the numeric dollar columns."
+  ]
+}

@@ -1,0 +1,21 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      STORMSENSE_JWT_SECRET: ${STORMSENSE_JWT_SECRET:?set STORMSENSE_JWT_SECRET to a long random value}
+      STORMSENSE_USER_AGENT: ${STORMSENSE_USER_AGENT:-StormSenseAI/1.0}
+      STORMSENSE_CORS_ORIGINS: http://localhost:8080
+    volumes:
+      - ./data:/srv/data
+    restart: unless-stopped
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

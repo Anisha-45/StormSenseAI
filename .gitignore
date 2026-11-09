@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+node_modules/
+frontend/dist/
+.env
+data/stormsense.db*
+data/uploads/
+data/reports/
+data/processed/quality_*.json
