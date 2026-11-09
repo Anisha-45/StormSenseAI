@@ -4,6 +4,7 @@ WORKDIR /srv/backend
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/ .
+COPY data/ /srv/data/
 # data/ is mounted as a volume (see docker-compose.yml) so raw files and the database persist
 ENV STORMSENSE_ROOT=/srv
 EXPOSE 8000
